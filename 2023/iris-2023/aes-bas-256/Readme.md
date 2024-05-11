@@ -1,0 +1,1 @@
+I heard that some common block cipher modes have lots of footguns - using none (ECB) results in the legendary ECB Penguin , while others are vulnerable to bit flipping and padding attacks, so I made my own that would never fall to such a technique.

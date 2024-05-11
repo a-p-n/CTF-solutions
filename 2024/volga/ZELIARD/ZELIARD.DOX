@@ -1,0 +1,152 @@
+
+
+Zeliard Dox
+===========
+
+brought to you by DROOLMASTER RICK/THG!
+
+
+
+ZELIARD
+=======
+
+
+To learn mnore about your mission in Zeliard , watch the openingcartoon at least once. To bypass the opening cartoon, press theSpacebar.
+
+If you have previously saved a game in Zeliard, you can bypassthe opening and load the game directly from DOS. See "RestoringYour Game" for instructions.
+
+INSTALLING THE GAME
+
+1. Place your backup copy you made of Disk 1 in your drive.
+2. Sing the praises of The Humble Guys, and sing it reverently. 
+3. Type INSTALL and press Enter.
+4. Sing "Praise be to Dave, from whom all software flows. Praisehim you lamers here below."            
+5. Answer the on screen questions using the up and down arrowkeys to highlight your selections, then press ENTER to select. 
+6. You will be asked if you wish to install the game on your harddisk. If you are some cheap lamefuk that doesn't have aharddrive, then what the hell are you doing wasting your timeplaying this game? Turn off that damned MTV, get your lardassoutta that chair, and go get a job, ya deadbeat. Oh, what thehell, I'm in a good mood, so since you don't have a harddrive,pressing ESC will bypass this step. If you want to install thegame on your hard drive, enter the letter designation of yourdrive (usually C) and follow the prompts.
+
+NOTICE; Even if you install to a hard disk, the install procedurewill write a file named RESOURCE.CFG to Disk 1. For theinstallation to be completed correctly, Disk 1 MUST NOT BE WRITEPROTECTED. No other files on Disk 1 are written or changed by theinstall command.
+
+
+Loading Instructions:
+
+After completing the INSTALL procedure:
+
+From diskettes:
+
+1. Place Disk 1 into the A: drive.
+2. Type A: and press Enter
+3. TYpe ZELIARD and press ENTER.
+
+From Hard Disk
+
+
+From your root directory, type ZELIARD and press ENTER.
+
+
+Moving Duke Garland
+
+Use the arrow keys or joystick to move Duke Garland in thedirection you wish him to go. On the joystick, the left button isfor weapon, the right button is for magic. On the keypad, use theleft and right arrow keys to travel. Use the up arrow to jump,and the down arrow to kneel. 
+
+
+In Town
+
+Talk to each person you see in town, each one will haveinformation for you. Beware! Some are under the spell of the DarkOne and may mislead you. To talk to a townsperson, press thespacebar when they approach. Press the spacebar to scrol through each message. Visit each location in town to get advice and supplies.
+To enter a building, stop before a doorway, and use the up arrow or 
+joystick position. Inside each place, you will be greeted by the 
+person in charge. Use the spacebar to scroll through messages.
+Use the arrow key to select an option, and press spacebar to
+execute each option.
+
+At The Bank
+
+At the bank you can deposit and withdraw gold, or exchange almas
+for gold. If you are depositing or withdrawing gold
+from your account, use the up and down arrow keys to increase
+and decrease the amount by one. Using the left and right
+arrows will increase and decrease these amounts by ten.
+
+
+
+In The Caverns
+
+
+Using Your Weapon
+
+To swing your sword, press the space bar. To swing upward, press
+the up arrow key while swinging the sword. To swing low, press the 
+down arrow key while swinging the sword. To thrust straight downward, 
+press the up arrow , then press space an d down arrow simultaneously
+(this move is difficult, and may require some pratice).
+
+
+
+About Your Armor
+
+You can find a selection of shields at the weapons shop. Each shield begins
+with a specific number of damage points, which will decrease as your 
+shield takes damage. If you can reach town before the shield breaks,
+ the Weapons Master will repair it for you. Watch the ARMOR window 
+to determine how many damage points remain.
+
+The Inventory Screen
+
+Press ENTER to access this screen. The items in the SPECIAL ITEMS
+area will be used automatically as you need them. Items in the 
+SPELLS and MAGIC ITEMS sections can be selected and used at will.
+Use the joystick or arrow keys to select an item or spell, then
+press the spacebar or fire button to select. Press
+ENTER to leave the screen.
+
+Using Magic
+
+Magic potions and items can be purchased at the magic shop, and the
+Sage at ech level (after Muralla Town) will reward you with a new
+spell. To use these items and spells, press ENTER to access the
+inventory screen. Use the arrow keys or joystick to select
+what you want, then press the spacebar to activate it. Press
+ENTER to return to the game screen. The active spell will be
+displayed in the SPELL window, to cast the spell, press the ALT
+key. Magic potions and items will take effect automatically.
+
+
+Saving Your Game
+
+To save your game, visit the Sage's hut (usually the only unmarked
+building in town) and select RECORD. Type in a name, and press ENTER.
+The game will be saved to the current disk and directory, with the
+file extention .USR
+
+Restoring Your Game
+
+Saved games can be restored from any point by pressing the F7 key. Use
+the joystick or arrow keys to select a saved game from the list, press
+the spacebar to activate the game, then press ENTER. From DOS, saved
+games can be loaded by typing ZELIARD followed by the name of the
+saved game file (example:zeliardgame1). The game will be loaded, 
+bypassing the opening sequence.
+
+COMMAND KEYS
+
+F1         toggles music on/off
+F2         turns sound effects on/off
+F9         adjust speed ( 0 =slow, 9= fast)
+F7         restore game
+ALT        cast spell
+ENTER      see inventory screen
+CTRL-J     select joystick control
+CTRL-K     select keyboard control
+CTRL-Q     quit game
+SPACEBAR   use weapon (in caverns only)
+
+
+
+
+To the men and women of Desert Shield, The Humble Guys salute you. Not
+only do we support what you are doing, we want you to be able to
+enjoy THG warez during your free time. That is why we are
+recruting couriers to get games to Saudi Arabia. If anyone out there
+would like to help out, contact any Humble Guy on any THG board.
+
+                                               THG '91!
+
+

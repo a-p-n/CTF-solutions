@@ -1,0 +1,186 @@
+// <!-- <mdb:mork:z v="1.4"/> -->
+< <(a=c)> // (f=iso-8859-1)
+  (B8=gloda-id)(B9=gloda-dirty)(BA=junkscore)(BB=preview)(BC=keywords)
+  (BD=columnStates)(BE=sortType)(BF=sortOrder)(C0=viewFlags)(C1=viewType)
+  (C2=sortColumns)(C3=customSortCol)(C4=sender_name)(C5=imageSize)
+  (C6=useServerRetention)(C7=retainBy)(C8=daysToKeepHdrs)
+  (C9=numHdrsToKeep)(CA=daysToKeepBodies)(CB=useServerDefaults)
+  (CC=cleanupBodies)(CD=applyToFlaggedMessages)(CE=remoteContentPolicy)
+  (CF=notAPhishMessage)(80=ns:msg:db:row:scope:msgs:all)(81=subject)
+  (82=sender)(83=message-id)(84=references)(85=recipients)(86=date)
+  (87=size)(88=flags)(89=priority)(8A=label)(8B=numLines)(8C=ccList)
+  (8D=bccList)(8E=msgThreadId)(8F=threadId)(90=threadFlags)
+  (91=threadNewestMsgDate)(92=children)(93=unreadChildren)
+  (94=threadSubject)(95=msgCharSet)(96=ns:msg:db:table:kind:msgs)
+  (97=ns:msg:db:table:kind:thread)(98=ns:msg:db:table:kind:allthreads)
+  (99=ns:msg:db:row:scope:threads:all)(9A=threadParent)(9B=threadRoot)
+  (9C=msgOffset)(9D=offlineMsgSize)
+  (9E=ns:msg:db:row:scope:dbfolderinfo:all)
+  (9F=ns:msg:db:table:kind:dbfolderinfo)(A0=numMsgs)(A1=numNewMsgs)
+  (A2=folderSize)(A3=expungedBytes)(A4=folderDate)(A5=highWaterKey)
+  (A6=mailboxName)(A7=UIDValidity)(A8=totPendingMsgs)
+  (A9=unreadPendingMsgs)(AA=expiredMark)(AB=version)(AC=forceReparse)
+  (AD=fixedBadRefThreading)(AE=folderName)(AF=indexingPriority)
+  (B0=storeToken)(B1=replyTo)(B2=account)(B3=dateReceived)
+  (B4=ProtoThreadFlags)(B5=MRUTime)
+  (B6=dobayes.mailnews@mozilla.org#junk.empty)
+  (B7=dobayes.mailnews@mozilla.org#junk)>
+<(80=1)(91=fffffffe)(8D=651d6b1b)(81=0)>
+[1:m(^9B=1)(^8F^91)(^91^8D)(^90=0)(^92=1)(^93=1)]
+<(9F=2)(9B=651d6df1)>[2:m(^9B=2)(^8F=2)(^91^9B)(^90=0)(^92=1)(^93=1)]
+<(A8=3)(A5=651d6eb3)>[3:m(^9B=3)(^8F=3)(^91^A5)(^90=0)(^92=1)(^93=1)]
+<(9C=4)(AF=6523bd28)>[4:m(^9B=4)(^8F=4)(^91^AF)(^90=0)(^92=1)(^93=1)]
+<(BB=5)(B8=6523bd71)>[5:m(^9B=5)(^8F=5)(^91^B8)(^90=0)(^92=1)(^93=0)]
+<(C4=6)(C1=6523bda5)>[6:m(^9B=6)(^8F=6)(^91^C1)(^90=0)(^92=1)(^93=1)]
+<(E0=7)(DD=6523d323)>[7:m(^9B=7)(^8F=7)(^91^DD)(^90=0)(^92=1)(^93=0)]
+<(F1=8)(EE=65254f0a)>[8:m(^9B=8)(^8F=8)(^91^EE)(^90=0)(^92=1)(^93=1)]
+
+<(86
+    ="noreply@home.comms.yahoo.net" <noreply-HP2v610000018afaea5ac1a9ca4c434b5\
+c38d8100@home.comms.yahoo.net>)(87=Yahoo Home  <info@home.comms.yahoo.net>)
+  (88=tomcage579@yahoo.com)(89
+    ==?UTF-8?B?QmluZSBhyJtpIHZlbml0IGxhIFlhaG9v?=)(8A
+    =HP2v610000018afaea5ac1a9ca4c434b5c38d8100@home.comms.yahoo.net)
+  (8B=account1)(8C=651d6b1c)(8E=7636)(8F=2ae)(90=ffffffff)(C7=)(CB
+    =0|Yahoo Home)(CE=20)(93=30264)(94=7638)(95
+    =noreply <noreply@facebookmail.com>)(96
+    ="Facebook" <registration@facebookmail.com>)(97
+    =Tom Cage <tomcage579@yahoo.com>)(98
+    =FB-65914 is your Facebook confirmation code)(99
+    =27f7a666-62bd-11ee-837f-ab66c337ac65@facebookmail.com)(9A=651d6df6)
+  (9D=4218)(9E=e6)(CC=0|Facebook)(CF=21)(A0=47186)(A1=b852)(A2
+    =Welcome to Facebook)(A3
+    =9bdfdb84-62bd-11ee-84d8-353581d29820@facebookmail.com)(A4=651d6ebc)
+  (A6=52bc)(A7=126)(D0=22)(A9=68368)(AA=10b10)(AB
+    =Yahoo <no-reply@cc.yahoo-inc.com>)(AC
+    =Notificare de conectare de la Yahoo)(AD
+    =810490975.56110.1696841000796@be101.member.ir2.yahoo.com)(AE=6523bd2a)
+  (B0=utf-8)(B1=3bc5)(B2=f4)(CD=0|Yahoo)(D1=23)(B3=83671)(B4=146d7)
+  (B5=Modificarea parolei pentru contul Yahoo)(B6
+    =735115416.55830.1696841073164@be118.member.ir2.yahoo.com)(B7=6523bd73)
+  (B9=2e7f)(BA=b0)(D2=24)(BC=95576)(BD=17558)(BE
+    ==?UTF-8?Q?Conectare_nou=C4=83_la_data_de_thunderbird?=)(BF
+    =2078491445.3145.1696841125811@api119.oauth.member.ir2.yahoo.com)
+  (C0=6523bdaa)(C2=2bdd)(C3=ae)(D3=25)(D6=106807)(C5=1a137)(D7
+    =sam jacson jacson <samjacson89@yahoo.com>)(D8
+    ="tomcage579@yahoo.com" <tomcage579@yahoo.com>)(D9=connection details)
+  (DA=154314459.8757393.1696846627466@mail.yahoo.com)(DB
+    =<154314459.8757393.1696846627466.ref@mail.yahoo.com>)(DC=6523d326)
+  (DE=1b71)(DF=c)(E2=0|sam jacson jacson)(E6=27)(E9=113834)(E3=1bcaa)
+  (EA="Facebook" <reminders@facebookmail.com>)(EB
+    =You have 2 notifications about Sam and others)(EC
+    =70fb9a32-676f-11ee-b60b-95daa048d12b@facebookmail.com)(ED=65254f0c)
+  (EF=5cf2)(F0=149)>
+{1:^80 {(k^96:c)(s=9)} 
+  [1(^B0=0)(^9C=0)(^88=0)(^B1^86)(^82^87)(^85^88)(^81^89)(^83^8A)(^B2^8B)
+    (^B3^8C)(^86^8D)(^89=1)(^87^8E)(^8B^8F)(^9A^90)(^8E^91)(^B4=0)(^BB=)
+    (^C4^CB)(^B8=20)]
+  [2(^B0^93)(^9C^94)(^88=0)(^B1^95)(^82^96)(^85^97)(^81^98)(^83^99)
+    (^B2^8B)(^B3^9A)(^86^9B)(^89=4)(^87^9D)(^8B=e6)(^9A^90)(^8E=2)(^B4=0)
+    (^C4^CC)(^B8=21)]
+  [3(^B0^A0)(^9C^A1)(^88=0)(^B1^95)(^82^96)(^85^97)(^81^A2)(^83^A3)
+    (^B2^8B)(^B3^A4)(^86^A5)(^89=4)(^87^A6)(^8B^A7)(^9A^90)(^8E=3)(^B4=0)
+    (^C4^CC)(^B8=22)]
+  [4(^B0^A9)(^9C^AA)(^88=0)(^82^AB)(^85^88)(^81^AC)(^83^AD)(^B2^8B)
+    (^B3^AE)(^86^AF)(^89=1)(^95^B0)(^87^B1)(^8B=f4)(^9A^90)(^8E=4)(^B4=0)
+    (^C4^CD)(^B8=23)]
+  [5(^B0^B3)(^9C^B4)(^88=1)(^82^AB)(^85^88)(^81^B5)(^83^B6)(^B2^8B)
+    (^B3^B7)(^86^B8)(^89=1)(^95^B0)(^87^B9)(^8B=b0)(^9A^90)(^8E=5)(^B4=0)
+    (^C4^CD)(^B8=24)(^CE=1)(^B9=0)]
+  [6(^B0^BC)(^9C^BD)(^88=0)(^82^AB)(^85^88)(^81^BE)(^83^BF)(^B2^8B)
+    (^B3^C0)(^86^C1)(^89=1)(^95^B0)(^87^C2)(^8B=ae)(^9A^90)(^8E=6)(^B4=0)
+    (^C4^CD)(^B8=25)]
+  [7(^B0^D6)(^9C^C5)(^88=1)(^82^D7)(^85^D8)(^81^D9)(^83^DA)(^B2^8B)
+    (^84^DB)(^B3^DC)(^86^DD)(^89=1)(^87^DE)(^8B=c)(^9A^90)(^8E=7)(^B4=0)
+    (^C4^E2)(^BB=)(^B9=0)(^B8=27)]
+  [8(^B0^E9)(^9C^E3)(^88=0)(^B1^95)(^82^EA)(^85^97)(^81^EB)(^83^EC)
+    (^B2^8B)(^B3^ED)(^86^EE)(^89=4)(^87^EF)(^8B^F0)(^9A^90)(^8E=8)(^B4=0)
+    (^C4^CC)]}
+{FFFFFFFE:^80 {(k^97:c)(s=9)1:m } 1 }
+{2:^80 {(k^97:c)(s=9)2:m } 2 }
+{3:^80 {(k^97:c)(s=9)3:m } 3 }
+{4:^80 {(k^97:c)(s=9)4:m } 4 }
+{5:^80 {(k^97:c)(s=9)5:m } 5 }
+{6:^80 {(k^97:c)(s=9)6:m } 6 }
+{7:^80 {(k^97:c)(s=9)7:m } 7 }
+{8:^80 {(k^97:c)(s=9)8:m } 8 }
+{FFFFFFFD:^99 {(k^98:c)(s=9)} [FFFFFFFE(^94^89)]
+  [2(^94^98)]
+  [3(^94^A2)]
+  [4(^94^AC)]
+  [5(^94^B5)]
+  [6(^94^BE)]
+  [7(^94^D9)]
+  [8(^94^EB)]}
+
+<(85=80001004)(83=Inbox)(F3=2199e)(F4=65255125)(F2=1696944421)(C9=12)
+  (CA=$121)>
+{1:^9E {(k^9F:c)(s=9)} 
+  [1(^AB=1)(^AC=0)(^AD=1)(^88^85)(^A6^83)(^A2^F3)(^A4^F4)(^A0=8)(^A1=6)
+    (^A5=8)(^B5^F2)(^BE=12)(^BF=1)(^C0=1)(^C1=0)(^C2^CA)(^C6=1)]}
+
+@$${28{@
+@$$}28}@
+
+@$${29{@
+<(F5=========================================)>
+[8:^80(^BB^F5)]
+@$$}29}@
+
+@$${2A{@
+<(F6=28)>[8:^80(^B8=28)]
+@$$}2A}@
+
+@$${2B{@
+@$$}2B}@
+
+@$${2C{@
+<(FE=9)(FB=6525c967)>[-9:m(^9B=9)(^8F=9)(^91^FB)(^90=0)(^92=1)(^93=1)]
+
+<(F7=137630)(F8="Facebook" <friendupdates@facebookmail.com>)(F9
+    ==?UTF-8?B?8J+TtyBTYW0gSmFja3NvbiBy?= =?UTF-8?B?ZWNlbnRseSBwb3N0ZWQg?= =?U\
+TF-8?B?YSBuZXcgcGhvdG8=?=)(FA
+    =5fa6e1a8-67b8-11ee-b285-4f8281e2bd44@facebookmail.com)(FC=4631)
+  (FD=ea)>
+{1:^80 {(k^96:c)(s=9)} 
+  [-9(^B0^F7)(^9C^F3)(^88=0)(^B1^95)(^82^F8)(^85^97)(^81^F9)(^83^FA)
+    (^B2^8B)(^B3^FB)(^86^FB)(^89=4)(^87^FC)(^8B=ea)(^9A^90)(^8E=9)(^B4=0)
+    (^C4^CC)]}
+{-9:^80 {(k^97:c)(s=9)9:m } 9 }
+{FFFFFFFD:^99 {(k^98:c)(s=9)} [-9(^94^F9)]}
+<(FF=25fd1)(100=6525cb07)>[-1:^9E(^AB=1)(^AC=0)(^AD=1)(^88^85)(^A6^83)
+    (^A2^FF)(^A4^100)(^A0=9)(^A1=7)(^A5=9)(^B5^F2)(^BE=12)(^BF=1)(^C0=1)
+    (^C1=0)(^C2^CA)(^C6=1)]
+@$$}2C}@
+
+@$${2D{@
+@$$}2D}@
+
+@$${2E{@
+<(101=1696975623)>[1:^9E(^B5^101)]
+@$$}2E}@
+
+@$${2F{@
+<(102=Hi Tom, $F0$9F$93$B7 Sam Jackson added a new photo Thanks, The Facebook \
+team)>[9:^80(^BB^102)]
+@$$}2F}@
+
+@$${30{@
+<(103=29)>[9:^80(^B8=29)]
+@$$}30}@
+
+@$${31{@
+@$$}31}@
+
+@$${32{@
+@$$}32}@
+
+@$${34{@
+<(104=1697547837)>[1:^9E(^B5^104)]
+@$$}34}@
+
+@$${35{@
+@$$}35}@
+
+@$${36{@
+@$$}36}@

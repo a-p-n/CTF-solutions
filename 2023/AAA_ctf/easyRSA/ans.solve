@@ -1,0 +1,38 @@
+cf = continued_fraction(Integer(n_2) / Integer(n_1))
+con = cf.convergents()
+cf1 = continued_fraction(Integer(n_3) / Integer(n_1))
+con1 = cf1.convergents()
+for idx in range(1, len(cf)):
+    k = cf.numerator(idx)
+    x = cf.denominator(idx)
+    if GCD(e, k) != 1:
+        continue
+    
+    for idy in range(1,len(cf1)):
+        k1 = cf1.numerator(idy)
+        x1 = cf1.denominator(idy)
+        if GCD(e, k1) != 1:
+            continue  
+        try:
+            phi = crt([inverse_mod(-k, e), 0 , inverse_mod(-k1,e), 0], [e, x,e,x1])
+            # if gcd(phi,e) == 1:
+            #     d = pow(e,-1,phi)
+            #     msg = long_to_bytes(pow(int(enc_1),int(d),int(n_1)))
+            #     try:
+            #         print(msg.decode())
+            #     except:
+            #         pass
+        except:
+            continue
+    lcm = e * x // GCD(e, x)
+
+    # phi += (n_1 - phi - 2**769) // lcm * lcm
+    while phi < n_1:
+        phi += lcm
+        if gcd(phi,e) == 1:
+            d = pow(e,-1,phi)
+            msg = long_to_bytes(pow(int(enc_1),int(d),int(n_1)))
+            try:
+                print(msg.decode())
+            except:
+                pass
