@@ -1,0 +1,10 @@
+version: "3.9"
+
+services:
+  hsm:
+    build: .
+    restart: unless-stopped
+    environment:
+      FLAG: "CSR{TESTFLAG}"
+    ports:
+      - "3229:1337"

@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  yao1:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "1373:1373"
+
