@@ -1,0 +1,6 @@
+$ mkdir -p "/home/apn/Documents/bi0s/my_git/CTF-solutions/2024/CSR/yet-another-obfuscator-1/target/debug/build/az-3c7c8d23066131c2/out/try_track_caller"
+$ cd "/home/apn/Documents/bi0s/my_git/CTF-solutions/2024/CSR/yet-another-obfuscator-1/target/debug/build/az-3c7c8d23066131c2/out/try_track_caller"
+$ printf '%s' "// try_tra"... > "/home/apn/Documents/bi0s/my_git/CTF-solutions/2024/CSR/yet-another-obfuscator-1/target/debug/build/az-3c7c8d23066131c2/out/try_track_caller/try_track_caller.rs"
+$ cd "/home/apn/Documents/bi0s/my_git/CTF-solutions/2024/CSR/yet-another-obfuscator-1/target/debug/build/az-3c7c8d23066131c2/out/try_track_caller" && "rustc" "try_track_caller.rs" "--emit=dep-info,metadata" >& /dev/null
+cargo:rustc-cfg=track_caller
+$ rm -r "/home/apn/Documents/bi0s/my_git/CTF-solutions/2024/CSR/yet-another-obfuscator-1/target/debug/build/az-3c7c8d23066131c2/out/try_track_caller"
