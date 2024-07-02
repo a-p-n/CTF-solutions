@@ -1,0 +1,27 @@
+from pwn import *
+io = remote("snore-signatures.chal.uiuc.tf", 1337, ssl=True)
+
+io.recvuntil(b"p = ")
+p = int(io.recvline().strip())
+io.recvuntil(b"q = ")
+q = int(io.recvline().strip())
+io.recvuntil(b"g = ")   
+g = int(io.recvline().strip())
+
+for i in range(1,11):
+    io.recvuntil(b"y = ")
+    y = int(io.recvline().strip())
+    io.recvuntil(b"query to the oracle\n")
+    io.recvuntil(b"m = ")
+    io.sendline(str(i).encode())
+    io.recvuntil(b"s = ")
+    s = int(io.recvline().strip())
+    io.recvuntil(b"e = ")
+    e = int(io.recvline().strip())
+    io.recvuntil(b"forge a signature?\n")
+    io.recvuntil(b"m = ")
+    io.sendline(str(i+p).encode())
+    io.recvuntil(b"s = ")
+    io.sendline(str(s).encode())
+    print(io.recvline())
+io.interactive()
