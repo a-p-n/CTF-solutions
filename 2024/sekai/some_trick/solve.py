@@ -4,8 +4,8 @@
 # bob says 18986306197549613063703475783723174313829692470029495182641744344887717273487903726826346095760335377914949999297913680960808327577033901605904129943636994753395912157919322330787435386625466546285111674245577675767748141644708437237476891396311945937600057499589239482161984093410293391439032526272378004425
 
 import random
-from sage.all import ZZ
-from Crypto.Util.number import long_to_bytes
+from Cryptodome.Util.number import long_to_bytes, bytes_to_long
+from tqdm import tqdm
 
 CIPHER_SUITE = 57392059573323092399775358664995080164653937262016805979183399297313325025274
 random.seed(CIPHER_SUITE)
@@ -15,13 +15,11 @@ GNUM = 79
 
 LIM = GSIZE**GNUM
 
-
 def gen(n):
     p, i = [0] * n, 0
     for j in random.sample(range(1, n), n - 1):
         p[i], i = j, j
     return tuple(p)
-
 
 def gexp(g, e):
     res = tuple(g)
@@ -32,41 +30,59 @@ def gexp(g, e):
         g = tuple(g[i] for i in g)
     return res
 
-
-def enc(k, m, G):
-    if not G:
-        return m
-    mod = len(G[0])
-    return gexp(G[0], k % mod)[m % mod] + enc(k // mod, m // mod, G[1:]) * mod
-
-
 def inverse(perm):
     res = list(perm)
     for i, v in enumerate(perm):
         res[v] = i
     return res
 
-G = [gen(GSIZE) for i in range(GNUM)]
+def solve1(g,e, enc):
+    return list(gexp(g, e)).index(enc)
+
+def solve2(g,m, enc):
+    res = tuple(g)
+    
+    for k in tqdm(range(GSIZE), desc="solve2"):
+        if g[m] == enc:
+            break
+        g = tuple(res[i] for i in g)
+    return k        
+
+def enc(k, m, G):
+    mod = len(G[0])
+    return gexp(G[0], k % mod)[m % mod] + enc(k // mod, m // mod, G[1:]) * mod
+
+def dec1(k, ct, G):
+    if not G:
+        return 0
+    mod = len(G[0])
+    enc_ = ct % mod
+    return solve1(G[0],k % mod, enc_) + dec1(k // mod, ct // mod, G[1:]) * mod
+
+def dec2(ct, m, G):
+
+    if not G:
+        return 0
+    mod = len(G[0])
+    enc_ = ct % mod
+    return solve2(G[0], m % mod, enc_) + dec2(ct // mod, m // mod, G[1:]) * mod
+
+G = [gen(GSIZE) for _ in range(GNUM)]
 G_inv = [inverse(g) for g in G]
 
 bob_encr = 1157367295530760079023529110979649919368025180581384047424574109752982784793024959842606585241299770214689349362681022276703938178755778821045684446081986731134228509668493160869624311674500908113399363823275843320951284179638264656976406488906833726053722254651117954983222764503945411622975352990554289294306
 alice_encr = 513889155168104014059572342663580061429914681859785183759124990498887393497705484723573270856713857126088944505914826806005372887907385177112890054002894940676310597945961643232534832981167118578710238587152646561502479226602489875425438323951377442759384599365854542485365236545136971754437985046353875703238
 bob_decr = 18986306197549613063703475783723174313829692470029495182641744344887717273487903726826346095760335377914949999297913680960808327577033901605904129943636994753395912157919322330787435386625466546285111674245577675767748141644708437237476891396311945937600057499589239482161984093410293391439032526272378004425
 
-bob_key = enc(alice_encr, bob_decr, G)
-bk = ZZ(bob_key).digits(GSIZE)
-be = ZZ(bob_encr).digits(GSIZE)
-ae = ZZ(alice_encr).digits(GSIZE)
-flag = []
-ak = []
-for i in range(GNUM):
-    g = G[i]
-    cycle = [0]
-    while len(cycle) < GSIZE:
-        cycle.append(g[cycle[-1]])
-    x = cycle.index(bk[i])
-    y = cycle.index(be[i])
-    f = (y - x - 1) % GSIZE
-    flag.append(f)
-assert len(flag) == GNUM
-f = sum(fi * GSIZE**i for i, fi in enumerate(flag))
+alice_key = dec1(bob_encr, alice_encr, G)
+print("ALICE KEY : ",alice_key)
+bob_key = dec1(alice_encr, bob_decr, G_inv)
+print("BOB KEY : ",bob_key)
+FLAG = dec2(bob_encr, bob_key, G)
+print(long_to_bytes(FLAG))
+print(bin(FLAG)[2:].index(bin(bytes_to_long(b"SEKAI{"))[2:]))
+
+for i in range(int(FLAG).bit_length()):
+    if long_to_bytes(FLAG >> i)[-1] == ord("}"):
+        print(long_to_bytes(FLAG >> i))
+# SEKAI{7c124c1b2aebfd9e439ca1c742d26b9577924b5a1823378028c3ed59d7ad92d1}
