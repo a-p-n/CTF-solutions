@@ -1,0 +1,20 @@
+{{define "head"}} {{if .IsLoggedIn}} {{include "layouts/header"}} {{else}}
+{{include "layouts/header_not"}} {{end}}{{end}}{{define "content"}}
+<div class="container my-5">
+    <div class="row">
+        {{range .Products}}
+        <div class="col-lg-3">
+            <div class="card mb-4">
+                <img class="card-img-top" src="{{.ImageURL}}" alt="{{.Name}}" />
+                <div class="card-body">
+                    <h5 class="card-title">{{safe .Name}}</h5>
+                    <p class="card-text">{{safe .Description}}</p>
+                    <p class="card-text"><strong>Price:</strong> {{.Price}}</p>
+                    <button class="btn btn-primary">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        {{end}}
+    </div>
+</div>
+{{end}}

@@ -1,0 +1,14 @@
+services:
+  ydfcode:
+    build: .
+    platform: linux/amd64
+    image: ${REGISTRY}hard-mlgoesbrr
+    restart: unless-stopped
+    ports:
+      - 4224:8000
+    cpus: 4
+    pids_limit: 8192
+    mem_limit: 2048m
+    memswap_limit: 2048m
+    environment:
+      - FLAG=brics+{example}

@@ -1,0 +1,71 @@
+version: "2.2"
+# ipv6 is not supported in version 3
+
+services:
+  varnish:
+    restart: unless-stopped
+    image: faust.cs.fau.de:5000/cached
+    init: true
+    build: cached
+    command: "-a :9090 -F -f /etc/varnish/default.vcl -T :6082 -t 120 -p thread_pool_min=50 -p thread_pool_max=1000 -p thread_pool_timeout=120 -i varnish -s malloc,512M"
+    ports:
+    - "9090:9090"
+    volumes: []
+    links:
+      - api
+      - frontend
+    external_links: []
+    networks:
+      - backend
+      - default
+  api:
+    restart: unless-stopped
+    image: faust.cs.fau.de:5000/missiond
+    init: true
+    build: missiond
+    command: gunicorn --config gunicorn.py app:app
+    expose:
+      - "5000"
+    networks:
+      - backend
+    links:
+      - postgres
+  frontend:
+    restart: unless-stopped
+    image: faust.cs.fau.de:5000/frontend
+    init: true
+    build: frontend
+    expose:
+      - "3000"
+    networks:
+      - backend
+  postgres:
+    restart: unless-stopped
+    image: postgres:16-alpine
+    volumes:
+      - ./data/:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: missions
+    command: -p 11111
+    expose:
+      - "11111"
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d missions"]
+      interval: 10s
+      timeout: 10s
+      retries: 20
+      start_period: 10s
+      
+networks:
+  backend:
+    name: backend
+  default:
+    enable_ipv6: true
+    ipam:
+        driver: default
+        config:
+            - subnet: "fd42:d0ce:666::/64"

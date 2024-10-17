@@ -1,0 +1,19 @@
+{{define "head"}} {{if .IsLoggedIn}} {{include "layouts/header"}} {{else}}
+{{include "layouts/header_not"}} {{end}} {{end}} {{define "content"}}
+<div class="container my-5 d-flex justify-content-center">
+    <div class="col-lg-6 col-md-8 col-sm-10">
+        <div class="card mb-4">
+            <div class="card-body text-center">
+                <h5 class="card-title">Account Information</h5>
+                <p class="card-text">
+                    <strong>Username:</strong> {{.Username}}
+                </p>
+                <p class="card-text"><strong>Email:</strong> {{.Email}}</p>
+                <p class="card-text">
+                    <strong>Joined:</strong> {{.JoinedDate}}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{{end}}

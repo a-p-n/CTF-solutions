@@ -1,0 +1,19 @@
+version: '2.2'
+services:
+  achat:
+    restart: unless-stopped
+    image: faust.cs.fau.de:5000/achat
+    init: true
+    cap_add:
+      - LINUX_IMMUTABLE
+    volumes:
+      - ./data/:/.achat_data/
+    ports:
+      - 1337:1337/tcp
+networks:
+  default:
+    enable_ipv6: true
+    ipam:
+      driver: default
+      config:
+        - subnet: fd42:d0ce:4444::/64

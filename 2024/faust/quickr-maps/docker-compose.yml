@@ -1,0 +1,37 @@
+version: '2.2'
+services:
+  location_portal:
+    image: faust.cs.fau.de:5000/location_portal
+    build:
+      context: ./location_portal
+      dockerfile: Dockerfile
+    ports:
+      - 4241:4241
+    volumes:
+      - portal-db:/location_portal/db
+    depends_on:
+      - private_loc
+      - public_loc
+  private_loc:
+    image: faust.cs.fau.de:5000/private_loc
+    build:
+      context: ./private_loc
+      dockerfile: Dockerfile
+    expose:
+      - '4242'
+  public_loc:
+    image: faust.cs.fau.de:5000/public_loc
+    build:
+      context: ./public_loc
+      dockerfile: Dockerfile
+    expose:
+      - '4242'
+volumes:
+  portal-db: null
+networks:
+  default:
+    enable_ipv6: true
+    ipam:
+      driver: default
+      config:
+        - subnet: fd42:d0ca:87::/64
