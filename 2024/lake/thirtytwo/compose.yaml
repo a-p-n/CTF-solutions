@@ -1,0 +1,7 @@
+services:
+  chal:
+    build: .
+    ports:
+      - 9005:1337
+    environment:
+      FLAG: EPFL{fake_flag}
