@@ -1,0 +1,37 @@
+SCP FOUNDATION INTERNAL FILE
+
+Item Number: SCP-3236
+Title: All Those Fucking Ideas
+
+ADULT CONTENT
+Do not proceed if you are not over the age of 18 or are not willing to see such content.
+SCP-3236
+Item #: SCP-3236
+Object Class: Safe
+Special Containment Procedures: SCP-3236 is stored at Site-136. Experimentation with SCP-3236 may be performed with the prior written consent of the site administrator. The tank is to be emptied and thoroughly cleaned and disinfected after each use.
+Description: SCP-3236 is a sensory modification appliance based on a modified "Float Pod"-brand sensory deprivation tank. Twelve lance-shaped, wired neuroprosthetic probes connect to sockets in the interior tub of the appliance. Accompanying documentation explains that to use the appliance, the probes are to be inserted into particular anatomical locations in the back of an individual's head and spinal cord in order to facilitate neuromuscular and transcutaneous electrical nerve stimulation, then the individual enters the sensory deprivation tank. The operator then enters instructions by means of the appliance's external keyboard.
+The accompanying documentation suggests that the original intended functionality of the appliance was to permit the user inside the tank to experience neurosimulated sexual activity for recreational purposes. By means of the keyboard, the external operator would enter commands specifying particular aspects of the user's experience. The probes would then deliver electrical signals to the user's nervous system, causing the user to experience artificially simulated sensory input, similar to a dream-state, for a period of up to ten minutes (although the user's subjective sense of a sensory episode's duration may vary). Upon the conclusion of the simulated experience, the tank opens and the probes may be safely removed.
+However, the appliance's processing system appears to be damaged and corrupted, with the result that the appliance does not respond to the full suite of commands that the documentation describes. Trial and error has established that the only command accepted by the appliance is the designation of the user's "partner" for the simulated experience. Moreover, it appears that only intangible concepts are accepted as data inputs.
+Experimental testing of SCP-3236 consists of placing a human subject in the tank, inserting the probes, administering commands to the appliance, and then interviewing the subject. Partial test log follows:
+Date: 08.02.20██
+Researcher: Dr. Garcia
+Subject: D-369, a 23-year old female subject.
+Test Results:
+Date: 09.30.20██
+Researcher: Dr. Patel
+Subject: D-2524, a 28-year old male subject.
+Test Results:
+Date: 11.14.20██
+Researcher: Dr. Morrison
+Subject: D-2526, a 22-year old male subject.
+Test Results:
+Date: 12.13.20██
+Researcher: Dr. Lamb
+Subject: D-3922, a 21-year old female subject.
+Test Results:
+Date: 1.27.20██
+Researcher: Dr. Little
+Subject: D-3698, a 26-year old female subject.
+Test Results:
+
+End of File.

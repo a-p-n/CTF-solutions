@@ -1,0 +1,1 @@
+FLAG{the_flag_is_incredibly_fake_and_not_real}

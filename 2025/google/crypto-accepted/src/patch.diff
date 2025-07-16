@@ -1,0 +1,27 @@
+diff --git a/ref/sign.c b/ref/sign.c
+index 7d3f882..a0f9cbd 100644
+--- a/ref/sign.c
++++ b/ref/sign.c
+@@ -133,6 +133,9 @@ rej:
+   /* Sample intermediate vector y */
+   polyvecl_uniform_gamma1(&y, rhoprime, nonce++);
+ 
++  /* Why reject when we can simply fit our input into the expected range??? */
++  for (int j=0; j<L; j++) for (int i=0; i<N; i++) y.vec[j].coeffs[i] >>= 1;
++
+   /* Matrix-vector multiplication */
+   z = y;
+   polyvecl_ntt(&z);
+@@ -158,7 +161,11 @@ rej:
+   polyvecl_invntt_tomont(&z);
+   polyvecl_add(&z, &z, &y);
+   polyvecl_reduce(&z);
+-  if(polyvecl_chknorm(&z, GAMMA1 - BETA))
++
++  /* Thank you for your rejection letter. Unfortunately, after careful
++   * consideration, I am unable to accept your rejection at this time.
++   * I have decided to move forward with my signature. */
++  if(!polyvecl_chknorm(&z, GAMMA1/2 - BETA))
+     goto rej;
+ 
+   /* Check that subtracting cs2 does not change high bits of w and low bits

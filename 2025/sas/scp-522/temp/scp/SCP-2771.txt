@@ -1,0 +1,21 @@
+SCP FOUNDATION INTERNAL FILE
+
+Item Number: SCP-2771
+Title: Border Duty
+
+Info about the article
+⚠️ Content warning: This article contains the following:
+- Gore
+- Police brutality
+⚠️ content warning
+Item #: SCP-2771
+Object Class: Euclid
+Special Containment Procedures: At least 15 armed personnel trained in Procedure 366-Tutella are to be available at Area-2771 at all times, in approximate SCP-2771-1 garb. Should SCP-2771-1 appear at any other Foundation facility, security personnel are to point insistently to the location of Area-2771 on a map until they disperse.
+Description: SCP-2771 is a phenomenon affecting clandestine Foundation facilities in which groups of SCP-2771-1 attempt to abduct armed security personnel. Resistance to, incapacitation, or capture of SCP-2771-1 merely results in their appearance in increased numbers and at additional facilities.
+Individually, SCP-2771-1 are non-anomalous humanoids dressed in poorly-cut cloth approximations of black tactical gear and green uniforms. SCP-2771-1 only communicate by insistently pointing their index and middle fingers or through nonverbal cues indicating annoyance, frustration, or disbelief.
+SCP-2771-1 will alter abductees’ clothing to roughly resemble their own using chalk, paint, and sackcloth. They are then transported by unknown means to SCP-2771-2, a desert area containing a toll-booth and a transportation system similar in appearance to an undulating human tongue. Subjects are required to sit in the toll-booth and engage with passing travelers for 8-12 hours before being returned to their facility of origin.
+Failure to interact with travelers using the appropriate protocol results in the subject's ejection and return by highly agitated SCP-2771-1, followed immediately by an additional abduction attempt. Although no direct communication of proper protocol has ever occurred, trial and error has resulted in Procedure 366-Tutella, significantly reducing ejections.
+Procedure 366-Tutella
+Personnel within SCP-2771-2 must remain within the toll-booth until removed. Humanoid travelers will approach alone or in pairs, sitting upright upon passing bulges of muscle. Appropriate reactions are detailed below. Pointing should always be conducted with the index and middle finger extended and the thumb resting on the curled ring finger. Report any undocumented behaviors after ejection.
+
+End of File.

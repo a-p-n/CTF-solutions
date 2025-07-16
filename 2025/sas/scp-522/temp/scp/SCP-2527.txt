@@ -1,0 +1,13 @@
+SCP FOUNDATION INTERNAL FILE
+
+Item Number: SCP-2527
+Title: Massy's Big Chance
+
+Object Class: Safe
+Special Containment Procedures: Outside of testing periods, SCP-2527-1 is to be contained in a reinforced steel containment crate, 4m cubic, on the side of the testing field at Site-59. Testing is to be carried out only as ordered by the Site Director.
+SCP-2527-2 is to be kept in a computer in an operations room behind three security doors with separate passwords. Access is strictly prohibited outside of testing periods. When not in use for testing, the computer containing SCP-2527-2 is to be shut down and unplugged.
+Description: SCP-2527-1 is a 2m high stone statue of a Lamassu.1 It is inert by default; however, depending on the commands entered into SCP-2527-2, SCP-2527-1 is capable of:
+SCP-2527-2 is a Commodore 64 text adventure game titled "Massy's Big Chance," used as a means to control the actions of SCP-2527-1. Box art of the game included the description: "Congratulaton!!! You are MASSY and became a GOD. Now go fort and establis your domonion!!!!"
+SCP-2527-2 Log: SCP-2527-1 capabilities against human subjects2
+
+End of File.
