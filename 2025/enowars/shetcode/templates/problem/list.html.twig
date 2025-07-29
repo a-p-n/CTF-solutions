@@ -1,0 +1,145 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Problems List{% endblock %}
+
+{% block body %}
+<div class="container">
+    {% if adminMessage %}
+        <div class="alert alert-warning border-warning mb-4" style="background: linear-gradient(45deg, #fff3cd, #fef8e6); border-left: 5px solid #856404;">
+            <div class="d-flex align-items-center">
+                <div class="me-3" style="font-size: 2rem;">🕰️</div>
+                <div class="flex-grow-1">
+                    <h5 class="alert-heading mb-2">📡 Transmission from {{ adminMessage.year }}</h5>
+                    <p class="mb-1" style="font-style: italic; font-size: 1.1rem;">"{{ adminMessage.message }}"</p>
+                    <small class="text-muted">— Received {{ adminMessage.createdAt|date('M j, Y H:i') }}</small>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Coding Problems</h1>
+        <div>
+            <a href="{{ path('problem_create') }}" class="btn btn-success me-2">Create New Problem</a>
+        </div>
+    </div>
+    
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label == 'error' ? 'danger' : label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+    
+    <!-- Author Filter Form -->
+    <div class="mb-4">
+        <form id="authorFilterForm" class="row g-3">
+            <div class="col-md-4">
+                <input type="text" id="authorIdSelect" name="author_username" class="form-control" placeholder="Enter Author Username">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </div>
+        </form>
+    </div>
+    
+    <div id="problems-container" class="row">
+    </div>
+    
+    <div id="no-problems" class="alert alert-info d-none">
+        <p class="mb-0">No problems available yet. Please check back later!</p>
+    </div>
+</div>
+
+{% block javascripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const problemsContainer = document.getElementById('problems-container');
+        const noProblemsMessage = document.getElementById('no-problems');
+        const authorFilterForm = document.getElementById('authorFilterForm');
+        const urlParams = new URLSearchParams(window.location.search);
+        const initialAuthorId = urlParams.get('author_username');
+        
+        if (initialAuthorId) {
+            document.getElementById('authorIdSelect').value = initialAuthorId;
+            loadProblems(initialAuthorId);
+        } else {
+            loadProblems();
+        }
+        
+        function loadProblems(authorId = null) {
+            const formData = new FormData();
+            if (authorId) {
+                formData.append('author_username', authorId);
+            }
+            
+            fetch('{{ path('get_problems_data') }}', {
+                method: 'POST',
+                body: formData,
+                credentials: 'same-origin'
+            })
+            .then(response => response.json())
+            .then(problems => {
+                problemsContainer.innerHTML = '';
+                
+                let visibleCount = 0;
+                
+                problems.forEach(problem => {
+                    const isPublished = problem.is_published == 1;
+                    
+                    const problemCard = document.createElement('div');
+                    problemCard.className = 'col-md-4 mb-4 problem-card';
+                    
+                    if (!isPublished) {
+                        problemCard.classList.add('d-none');
+                    } else {
+                        visibleCount++;
+                    }
+                    
+                    problemCard.innerHTML = `
+                        <div class="card h-100">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">${problem.title}</h5>
+                                <span class="badge ${problem.difficulty === 'Easy' ? 'bg-success' : problem.difficulty === 'Medium' ? 'bg-warning' : 'bg-danger'}">
+                                    ${problem.difficulty}
+                                </span>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">${problem.description.length > 150 ? problem.description.substring(0, 150) + '...' : problem.description}</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="/problems/details/${problem.id}" class="btn btn-primary w-100">Solve Challenge</a>
+                            </div>
+                        </div>
+                    `;
+                    
+                    problemsContainer.appendChild(problemCard);
+                });
+                
+                if (visibleCount === 0) {
+                    noProblemsMessage.classList.remove('d-none');
+                } else {
+                    noProblemsMessage.classList.add('d-none');
+                }
+            })
+            .catch(error => {
+                console.error('Error loading problems:', error);
+            });
+        }
+        
+        authorFilterForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const authorId = document.getElementById('authorIdSelect').value;
+            loadProblems(authorId);
+            
+            if (authorId) {
+                history.pushState(null, '', '{{ path('problems_list') }}?author_username=' + authorId);
+            } else {
+                history.pushState(null, '', '{{ path('problems_list') }}');
+            }
+        });
+    });
+</script>
+{% endblock %}
+{% endblock %} 

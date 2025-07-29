@@ -1,0 +1,68 @@
+version: "3.8"
+
+services:
+  php:
+    build: .
+    ports:
+      - "8055:80"
+    depends_on:
+      database:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    environment:
+      DATABASE_URL: "postgresql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-app}@database:5432/${POSTGRES_DB:-app}"
+      REDIS_URL: "redis://redis:6379"
+      APP_ENV: "prod"
+      APP_DEBUG: "0"
+      # PHP-FPM optimization
+      PHP_FPM_PM: "dynamic"
+      PHP_FPM_PM_MAX_CHILDREN: "20"
+      PHP_FPM_PM_START_SERVERS: "5"
+      PHP_FPM_PM_MIN_SPARE_SERVERS: "3"
+      PHP_FPM_PM_MAX_SPARE_SERVERS: "8"
+      PHP_FPM_PM_MAX_REQUESTS: "500"
+    restart: unless-stopped
+    privileged: true
+    cap_add:
+      - SYS_ADMIN
+    volumes:
+      - submissions_data:/var/www/html/public/submissions
+    mem_limit: 1200m
+    cpus: 1.5
+
+  database:
+    image: postgres:${POSTGRES_VERSION:-16}-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-app}
+      POSTGRES_DB: ${POSTGRES_DB:-app}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-app}
+    healthcheck:
+      test: ["CMD", "pg_isready", "-d", "${POSTGRES_DB:-app}", "-U", "${POSTGRES_USER:-app}"]
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    volumes:
+      - database_data:/var/lib/postgresql/data:rw
+    mem_limit: 600m
+    cpus: 0.5
+
+  redis:
+    image: redis:7-alpine
+    command: >
+      redis-server
+      --maxmemory 128mb
+      --maxmemory-policy allkeys-lru
+      --save 60 1000
+      --appendonly yes
+      --appendfsync everysec
+    volumes:
+      - redis_data:/data
+    mem_limit: 200m
+    cpus: 0.1
+    restart: unless-stopped
+
+volumes:
+  database_data:
+  redis_data:
+  submissions_data:

@@ -1,0 +1,9 @@
+# Use https://gitignore.io/ to create a suitable .gitignore file for your project.
+.idea/
+node_modules/
+
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/public/submissions
+/var/
+/vendor/

@@ -1,0 +1,203 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ problem.title }}{% endblock %}
+
+{% block body %}
+<div class="container">
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label == 'error' ? 'danger' : label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+    
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <h1>{{ problem.title }}</h1>
+            <span class="badge {% if problem.difficulty == 'Easy' %}bg-success{% elseif problem.difficulty == 'Medium' %}bg-warning{% else %}bg-danger{% endif %} mb-3">
+                {{ problem.difficulty }}
+            </span>
+            <div class="mb-4">
+                <h5>Problem Description:</h5>
+                <div class="card p-3">
+                    {{ problem.description|nl2br }}
+                </div>
+            </div>
+            
+            <div class="mb-4">
+                <h5>Test Cases:</h5>
+                <div class="card p-3">
+                    <ul class="list-group list-group-flush">
+                        {% for test, output in test_examples %}
+                            <li class="list-group-item">
+                                <strong>Input:</strong> <code>{{ test }}</code><br>
+                                <strong>Expected Output:</strong> <code>{{ output }}</code>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <small class="text-muted">Note: These are sample test cases. Your solution will be tested against additional hidden test cases.</small>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5 class="mb-0">Author</h5>
+                </div>
+                <div class="card-body">
+                    <p>{{ problem.author ? problem.author.username : 'Unknown' }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 class="mb-0">Submit Your Solution</h4>
+                    <div>
+                        <select id="languageSelect" class="form-select">
+                            <option value="python" selected>Python</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form id="solutionForm">
+                        <div class="mb-3">
+                            <div id="codeEditor"></div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Solution</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="resultContainer" class="mt-4 d-none">
+        <div class="card">
+            <div class="card-header">
+                <h4>Results</h4>
+            </div>
+            <div class="card-body">
+                <div id="resultContent"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<!-- Add CodeMirror CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css">
+
+<!-- Add CodeMirror JS and Python mode -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/python/python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/matchbrackets.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/closebrackets.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const solutionForm = document.getElementById('solutionForm');
+        const resultContainer = document.getElementById('resultContainer');
+        const resultContent = document.getElementById('resultContent');
+        
+        const editor = CodeMirror(document.getElementById('codeEditor'), {
+            mode: 'python',
+            theme: 'monokai',
+            lineNumbers: true,
+            indentUnit: 4,
+            tabSize: 4,
+            indentWithTabs: false,
+            smartIndent: true,
+            lineWrapping: true,
+            matchBrackets: true,
+            autoCloseBrackets: true,
+            extraKeys: {"Tab": "indentMore", "Shift-Tab": "indentLess"},
+            placeholder: "# Write your Python code here"
+        });
+        
+        const startingCode = `## Implement your solution here \n## The input is provided through the input() function \n## The output should be printed to the console`;
+        {% if previous_solution %}
+        editor.setValue({{ previous_solution|json_encode|raw }});
+        {% else %}
+        editor.setValue(startingCode);
+        {% endif %}
+        
+        editor.setSize(null, 400);
+        
+        solutionForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const code = editor.getValue();
+            if (!code.trim()) {
+                alert('Please enter your solution code');
+                return;
+            }
+            
+            const formData = new FormData();
+            formData.append('code', code);
+            
+            resultContainer.classList.remove('d-none');
+            resultContent.innerHTML = '<div class="text-center"><div class="spinner-border text-primary" role="status"></div><p class="mt-2">Testing your solution...</p></div>';
+            
+            {% if is_private is defined and is_private %}
+            fetch('{{ path("submit_private_solution", {"id": problem.id}) }}', {
+            {% else %}
+            fetch('{{ path("submit_solution", {"id": problem.id}) }}', {
+            {% endif %}
+                method: 'POST',
+                body: formData,
+                credentials: 'same-origin'
+            })
+            .then(response => response.json())
+            .then(data => {
+                resultContainer.classList.remove('d-none');
+                
+                let resultHtml = '';
+                if (data.error) {
+                    resultHtml = `<div class="alert alert-danger">${data.error}</div>`;
+                } else {
+                    let allPassed = true;
+                    
+                    resultHtml = '<div class="test-results">';
+                    data.results.forEach((result, index) => {
+                        const passed = result.passed === true;
+                        allPassed = allPassed && passed;
+                        
+                        resultHtml += `
+                            <div class="card mb-3 border-${passed ? 'success' : 'danger'}">
+                                <div class="card-header bg-${passed ? 'success' : 'danger'} text-white">
+                                    Test Case ${index + 1}: ${passed ? 'Passed' : 'Failed'}
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Input:</strong> <code>${result.input}</code></p>
+                                    <p><strong>Expected Output:</strong> <code>${result.expected}</code></p>
+                                    <p><strong>Your Output:</strong> <code>${result.output}</code></p>
+                                    ${result.message ? `<p><strong>Message:</strong> ${result.message}</p>` : ''}
+                                </div>
+                            </div>
+                        `;
+                    });
+                    
+                    if (allPassed) {
+                        resultHtml = `<div class="alert alert-success mb-4">All test cases passed! Great job!</div>` + resultHtml;
+                    }
+                    
+                    resultHtml += '</div>';
+                }
+                
+                resultContent.innerHTML = resultHtml;
+            })
+            .catch(error => {
+                resultContainer.classList.remove('d-none');
+                resultContent.innerHTML = `<div class="alert alert-danger">An error occurred while testing your solution: ${error.message}</div>`;
+            });
+        });
+    });
+</script>
+{% endblock %} 
