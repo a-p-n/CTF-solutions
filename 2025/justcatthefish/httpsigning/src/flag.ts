@@ -1,0 +1,1 @@
+export const FLAG = process.env.FLAG || 'justCTF{some fake flag here}'

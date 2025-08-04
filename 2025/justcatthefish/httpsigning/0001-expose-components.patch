@@ -1,0 +1,39 @@
+From e33d2f337e87749afd0291693ff6414d93e78cfa Mon Sep 17 00:00:00 2001
+From: GrosQuildu <e2.8a.95@gmail.com>
+Date: Wed, 30 Jul 2025 00:33:14 +0200
+Subject: [PATCH] expose components
+
+---
+ packages/http-message-sig/src/types.ts  | 3 ++-
+ packages/http-message-sig/src/verify.ts | 3 +--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/packages/http-message-sig/src/types.ts b/packages/http-message-sig/src/types.ts
+index 98b7a77..cc82f74 100644
+--- a/packages/http-message-sig/src/types.ts
++++ b/packages/http-message-sig/src/types.ts
+@@ -23,7 +23,8 @@ export interface SignerSync {
+ export type Verify<T> = (
+   data: string,
+   signature: Uint8Array,
+-  params: Parameters
++  params: Parameters,
++  components?: Component[]
+ ) => T | Promise<T>;
+ 
+ interface HeadersMap {
+diff --git a/packages/http-message-sig/src/verify.ts b/packages/http-message-sig/src/verify.ts
+index a9c908c..d31eeb2 100644
+--- a/packages/http-message-sig/src/verify.ts
++++ b/packages/http-message-sig/src/verify.ts
+@@ -24,6 +24,5 @@ export async function verify<T>(
+     .toString()
+     .replace(/^[^=]+=/, "");
+   const signedData = buildSignedData(message, components, signatureInputString);
+-
+-  return verifier(signedData, signature, parameters);
++  return verifier(signedData, signature, parameters, components);
+ }
+-- 
+2.48.1
+

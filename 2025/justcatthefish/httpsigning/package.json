@@ -1,0 +1,29 @@
+{
+  "name": "http-signing",
+  "version": "1.0.0",
+  "description": "HTTP signing",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "prebuild": "npm run clean",
+    "generate-key": "node ./generate-key.js bob-private.pem bob-public.pem",
+    "alice": "node dist/src/alice.js bob-public.pem",
+    "bob": "node dist/src/bob.js bob-private.pem"
+  },
+  "dependencies": {
+    "undici": "^6.19.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.8.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "ctf",
+    "http-signing"
+  ],
+  "author": "Gros Quildu",
+  "license": "MIT"
+}

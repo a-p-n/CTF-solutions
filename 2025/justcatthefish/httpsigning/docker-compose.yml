@@ -1,0 +1,79 @@
+services:
+  # Key generation initialization container
+  keygen:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - keys:/app/keys
+      - pubkeys:/app/pubkeys
+    working_dir: /app
+    command: >
+      sh -c "
+        echo 'Generating Bob keys...' &&
+        node ./generate-key.js &&
+        cp bob-private.pem bob-public.pem /app/keys/ &&
+        cp bob-public.pem /app/pubkeys/ &&
+        echo 'Keys generated and copied to shared volumes'
+      "
+
+  # Bob HTTP server
+  bob:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - keys:/app/keys:ro
+    environment:
+      - NODE_ENV=production
+      - PORT=8080
+      - BOB_PRIVATE_KEY_PATH=/app/keys/bob-private.pem
+    command: >
+      sh -c "
+        npm run build &&
+        node ./dist/src/bob.js
+      "
+    depends_on:
+      - keygen
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Alice client
+  alice:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "9999:9999"
+    volumes:
+      - pubkeys:/app/pubkeys:ro
+    environment:
+      - NODE_ENV=production
+      - BOB_URL=http://bob:8080
+      - BOB_PUBLIC_KEY_PATH=/app/pubkeys/bob-public.pem
+      - FLAG=${FLAG}
+    command: >
+      sh -c "
+        npm run build &&
+        echo 'Starting Alice through socat...' &&
+        socat TCP-LISTEN:9999,reuseaddr,fork EXEC:'node ./dist/src/alice.js',pty,stderr
+      "
+    depends_on:
+      - bob
+
+networks:
+  default:
+    driver: bridge
+
+volumes:
+  keys:
+    driver: local
+  pubkeys:
+    driver: local
+  
